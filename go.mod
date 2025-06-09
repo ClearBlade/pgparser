@@ -1,4 +1,4 @@
-module pgparser
+module github.com/clearblade/pgparser
 
 go 1.24.2
 
