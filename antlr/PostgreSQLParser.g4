@@ -3627,8 +3627,7 @@ a_expr_compare
 /*10*/
 
 a_expr_like
-    : (a_expr_qual_op (NOT? (LIKE | ILIKE | SIMILAR TO) a_expr_qual_op escape_?)?)
-    | template_item
+    : a_expr_qual_op (NOT? (LIKE | ILIKE | SIMILAR TO) a_expr_qual_op escape_?)?
     ;
 
 /* 8*/
@@ -4363,6 +4362,7 @@ anysconst
     | UnicodeEscapeStringConstant
     | BeginDollarStringConstant DollarText* EndDollarStringConstant
     | EscapeStringConstant
+    | QUESTION
     ;
 
 uescape_
