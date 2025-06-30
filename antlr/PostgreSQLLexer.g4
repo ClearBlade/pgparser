@@ -49,7 +49,7 @@ options {
 
 Dollar: '$';
 
-QUESTION: '?'
+QUESTION: '?';
 
 OPEN_PAREN: '(';
 
