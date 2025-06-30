@@ -3532,8 +3532,6 @@ original version of a_expr, for info
 ;
 */
 
-template_item: QUESTION;
-
 a_expr
     : a_expr_qual
     ;
@@ -4331,7 +4329,6 @@ aexprconst
     | TRUE_P
     | FALSE_P
     | NULL_P
-    | template_item
     ;
 
 xconst
@@ -4362,7 +4359,11 @@ anysconst
     | UnicodeEscapeStringConstant
     | BeginDollarStringConstant DollarText* EndDollarStringConstant
     | EscapeStringConstant
-    | QUESTION
+    | template_item
+    ;
+
+template_item
+    : QUESTION
     ;
 
 uescape_

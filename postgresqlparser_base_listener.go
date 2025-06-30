@@ -3667,12 +3667,6 @@ func (s *BasePostgreSQLParserListener) EnterEscape_(ctx *Escape_Context) {}
 // ExitEscape_ is called when production escape_ is exited.
 func (s *BasePostgreSQLParserListener) ExitEscape_(ctx *Escape_Context) {}
 
-// EnterTemplate_item is called when production template_item is entered.
-func (s *BasePostgreSQLParserListener) EnterTemplate_item(ctx *Template_itemContext) {}
-
-// ExitTemplate_item is called when production template_item is exited.
-func (s *BasePostgreSQLParserListener) ExitTemplate_item(ctx *Template_itemContext) {}
-
 // EnterA_expr is called when production a_expr is entered.
 func (s *BasePostgreSQLParserListener) EnterA_expr(ctx *A_exprContext) {}
 
@@ -4444,6 +4438,12 @@ func (s *BasePostgreSQLParserListener) EnterAnysconst(ctx *AnysconstContext) {}
 
 // ExitAnysconst is called when production anysconst is exited.
 func (s *BasePostgreSQLParserListener) ExitAnysconst(ctx *AnysconstContext) {}
+
+// EnterTemplate_item is called when production template_item is entered.
+func (s *BasePostgreSQLParserListener) EnterTemplate_item(ctx *Template_itemContext) {}
+
+// ExitTemplate_item is called when production template_item is exited.
+func (s *BasePostgreSQLParserListener) ExitTemplate_item(ctx *Template_itemContext) {}
 
 // EnterUescape_ is called when production uescape_ is entered.
 func (s *BasePostgreSQLParserListener) EnterUescape_(ctx *Uescape_Context) {}

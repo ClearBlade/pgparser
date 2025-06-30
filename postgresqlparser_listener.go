@@ -1751,9 +1751,6 @@ type PostgreSQLParserListener interface {
 	// EnterEscape_ is called when entering the escape_ production.
 	EnterEscape_(c *Escape_Context)
 
-	// EnterTemplate_item is called when entering the template_item production.
-	EnterTemplate_item(c *Template_itemContext)
-
 	// EnterA_expr is called when entering the a_expr production.
 	EnterA_expr(c *A_exprContext)
 
@@ -2128,6 +2125,9 @@ type PostgreSQLParserListener interface {
 
 	// EnterAnysconst is called when entering the anysconst production.
 	EnterAnysconst(c *AnysconstContext)
+
+	// EnterTemplate_item is called when entering the template_item production.
+	EnterTemplate_item(c *Template_itemContext)
 
 	// EnterUescape_ is called when entering the uescape_ production.
 	EnterUescape_(c *Uescape_Context)
@@ -3923,9 +3923,6 @@ type PostgreSQLParserListener interface {
 	// ExitEscape_ is called when exiting the escape_ production.
 	ExitEscape_(c *Escape_Context)
 
-	// ExitTemplate_item is called when exiting the template_item production.
-	ExitTemplate_item(c *Template_itemContext)
-
 	// ExitA_expr is called when exiting the a_expr production.
 	ExitA_expr(c *A_exprContext)
 
@@ -4300,6 +4297,9 @@ type PostgreSQLParserListener interface {
 
 	// ExitAnysconst is called when exiting the anysconst production.
 	ExitAnysconst(c *AnysconstContext)
+
+	// ExitTemplate_item is called when exiting the template_item production.
+	ExitTemplate_item(c *Template_itemContext)
 
 	// ExitUescape_ is called when exiting the uescape_ production.
 	ExitUescape_(c *Uescape_Context)
