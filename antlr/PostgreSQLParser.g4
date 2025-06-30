@@ -3721,7 +3721,7 @@ c_expr
     | implicit_row                                                     # c_expr_expr
     | row OVERLAPS row /* 14*/                                         # c_expr_expr
     | DEFAULT                                                          # c_expr_expr
-    | template_item
+    | template_item                                                    # c_expr_expr
     ;
 
 plsqlvariablename
