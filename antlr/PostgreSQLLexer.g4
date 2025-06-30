@@ -116,14 +116,13 @@ PARAM: '$' ([0-9])+;
 Operator:
     (
         (
-            OperatorCharacter
+            {!p.IsEqualQuestion()}? OperatorCharacter
             | ('+' | '-' {p.CheckLaMinus()}? )+ (OperatorCharacter | '/' {p.CheckLaStar()}? )
             | '/'        {p.CheckLaStar()}?
-        )+
+        )+ 
         | // special handling for the single-character operators + and -
         [+-]
     )
-    {!p.IsEqualQuestion()}? // Prevent matching =? as an operator
     //TODO somehow rewrite this part without using Actions
     {l.HandleLessLessGreaterGreater();}
 ;

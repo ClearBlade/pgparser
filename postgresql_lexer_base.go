@@ -52,7 +52,7 @@ func (receiver *PostgreSQLLexerBase) CheckLaMinus() bool {
 }
 
 func (receiver *PostgreSQLLexerBase) IsEqualQuestion() bool {
-	return receiver.GetInputStream().LA(1) == '=' && receiver.GetInputStream().LA(2) == '?'
+	return receiver.GetText() == "=" && receiver.GetInputStream().LA(1) == '?'
 }
 
 func (receiver *PostgreSQLLexerBase) CheckLaStar() bool {
