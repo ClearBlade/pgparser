@@ -147,15 +147,13 @@ OperatorEndingWithPlusMinus:
 
 // by the operator rules above.
 
-//fragment OperatorCharacter: [*<>=~!@%^&|`?#];
-fragment OperatorCharacter: [*<>=~!@%^&|`#];
+fragment OperatorCharacter: [*<>=~!@%^&|`?#];
 // these are the operator characters that don't count towards one ending with + or -
 
 fragment OperatorCharacterNotAllowPlusMinusAtEnd: [*<>=+];
 // an operator may end with + or - if it contains one of these characters
 
-//fragment OperatorCharacterAllowPlusMinusAtEnd: [~!@%^&|`?#];
-fragment OperatorCharacterAllowPlusMinusAtEnd: [~!@%^&|`#];
+fragment OperatorCharacterAllowPlusMinusAtEnd: [~!@%^&|`?#];
 //
 
 // KEYWORDS (Appendix C)
