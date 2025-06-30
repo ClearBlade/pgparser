@@ -3703,7 +3703,6 @@ b_expr
     | b_expr qual_op
     //S ISNULL NOTNULL	 	IS TRUE, IS FALSE, IS NULL, IS DISTINCT FROM, etc
     | b_expr IS NOT? (DISTINCT FROM b_expr | OF OPEN_PAREN type_list CLOSE_PAREN | DOCUMENT_P)
-    | template_item
     ;
 
 c_expr
@@ -3722,6 +3721,7 @@ c_expr
     | implicit_row                                                     # c_expr_expr
     | row OVERLAPS row /* 14*/                                         # c_expr_expr
     | DEFAULT                                                          # c_expr_expr
+    | template_item
     ;
 
 plsqlvariablename
