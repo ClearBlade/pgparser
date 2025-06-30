@@ -5464,4 +5464,5 @@ identifier
     | QuotedIdentifier
     | UnicodeQuotedIdentifier
     | PLSQLVARIABLENAME
+    | template_item
     ;
