@@ -123,6 +123,7 @@ Operator:
         | // special handling for the single-character operators + and -
         [+-]
     )
+    {!p.IsEqualQuestion()}? // Prevent matching =? as an operator
     //TODO somehow rewrite this part without using Actions
     {l.HandleLessLessGreaterGreater();}
 ;
