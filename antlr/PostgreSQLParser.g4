@@ -3529,6 +3529,7 @@ original version of a_expr, for info
        | a_expr subquery_Op sub_type (select_with_parens|OPEN_PAREN a_expr CLOSE_PAREN) -- 21
        | UNIQUE select_with_parens -- 22
        | DEFAULT -- 23
+       | QUESTION
 ;
 */
 

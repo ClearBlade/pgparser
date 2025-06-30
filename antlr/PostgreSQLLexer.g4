@@ -49,6 +49,8 @@ options {
 
 Dollar: '$';
 
+QUESTION: '?'
+
 OPEN_PAREN: '(';
 
 CLOSE_PAREN: ')';
