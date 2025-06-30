@@ -3628,6 +3628,7 @@ a_expr_compare
 
 a_expr_like
     : a_expr_qual_op (NOT? (LIKE | ILIKE | SIMILAR TO) a_expr_qual_op escape_?)?
+    | template_item
     ;
 
 /* 8*/
