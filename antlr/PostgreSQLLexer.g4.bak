@@ -49,6 +49,8 @@ options {
 
 Dollar: '$';
 
+QUESTION: '?';
+
 OPEN_PAREN: '(';
 
 CLOSE_PAREN: ')';
@@ -115,14 +117,14 @@ Operator:
     (
         (
             OperatorCharacter
-            | ('+' | '-' {this.CheckLaMinus()}? )+ (OperatorCharacter | '/' {this.CheckLaStar()}? )
-            | '/'        {this.CheckLaStar()}?
+            | ('+' | '-' {p.CheckLaMinus()}? )+ (OperatorCharacter | '/' {p.CheckLaStar()}? )
+            | '/'        {p.CheckLaStar()}?
         )+
         | // special handling for the single-character operators + and -
         [+-]
     )
     //TODO somehow rewrite this part without using Actions
-    {this.HandleLessLessGreaterGreater();}
+    {l.HandleLessLessGreaterGreater();}
 ;
 /* This rule handles operators which end with + or -, and sets the token type to Operator. It is comprised of four
  * parts, in order:
@@ -136,9 +138,9 @@ Operator:
  */
 
 OperatorEndingWithPlusMinus:
-    (OperatorCharacterNotAllowPlusMinusAtEnd | '-' {this.CheckLaMinus()}? | '/' {this.CheckLaStar()}? )* OperatorCharacterAllowPlusMinusAtEnd Operator? (
+    (OperatorCharacterNotAllowPlusMinusAtEnd | '-' {p.CheckLaMinus()}? | '/' {p.CheckLaStar()}? )* OperatorCharacterAllowPlusMinusAtEnd Operator? (
         '+'
-        | '-' {this.CheckLaMinus()}?
+        | '-' {p.CheckLaMinus()}?
     )+        -> type (Operator)
 ;
 // Each of the following fragment rules omits the +, -, and / characters, which must always be handled in a special way
@@ -1215,9 +1217,9 @@ fragment IdentifierStartChar options {
     | // these are the valid characters from 0x80 to 0xFF
     [\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]
     |                               // these are the letters above 0xFF which only need a single UTF-16 code unit
-    [\u0100-\uD7FF\uE000-\uFFFF]    {this.CharIsLetter()}?
+    [\u0100-\uD7FF\uE000-\uFFFF]    {p.CharIsLetter()}?
     |                               // letters which require multiple UTF-16 code units
-    [\uD800-\uDBFF] [\uDC00-\uDFFF] {this.CheckIfUtf32Letter()}?
+    [\uD800-\uDBFF] [\uDC00-\uDFFF] {p.CheckIfUtf32Letter()}?
 ;
 
 fragment IdentifierChar: StrictIdentifierChar | '$';
@@ -1290,7 +1292,7 @@ UnicodeEscapeStringConstant: UnterminatedUnicodeEscapeStringConstant '\'';
 UnterminatedUnicodeEscapeStringConstant: 'U' '&' UnterminatedStringConstant;
 // Dollar-quoted String Constants (4.1.2.4)
 
-BeginDollarStringConstant: '$' Tag? '$' {this.PushTag();} -> pushMode (DollarQuotedStringMode);
+BeginDollarStringConstant: '$' Tag? '$' {l.PushTag();} -> pushMode (DollarQuotedStringMode);
 /* "The tag, if any, of a dollar-quoted string follows the same rules as an
  * unquoted identifier, except that it cannot contain a dollar sign."
  */
@@ -1323,7 +1325,7 @@ OctalIntegral: '0o' Digits;
 
 HexadecimalIntegral: '0x' Digits;
 
-NumericFail: Digits '..' {this.HandleNumericFail();};
+NumericFail: Digits '..' {l.HandleNumericFail();};
 
 Numeric:
     Digits '.' Digits? /*? replaced with + to solve problem with DOT_DOT .. but this surely must be rewriten */ (
@@ -1370,7 +1372,7 @@ UnterminatedBlockComment:
     // Handle the case of / or * characters at the end of the file, or a nested unterminated block comment
     ('/'+ | '*'+ | '/'* UnterminatedBlockComment)?
     // Optional assertion to make sure this rule is working as intended
-    {this.UnterminatedBlockCommentDebugAssert();}
+    {l.UnterminatedBlockCommentDebugAssert();}
 ;
 //
 
@@ -1468,9 +1470,9 @@ DollarText:
 ;
 
 // NB: Next rule on two lines in order to make transformGrammar.py easy.
-EndDollarStringConstant: ('$' Tag? '$') {this.IsTag()}?
-    {this.PopTag();} -> popMode;
+EndDollarStringConstant: ('$' Tag? '$') {p.IsTag()}?
+    {l.PopTag();} -> popMode;
 
 mode META;
-MetaSemi : {this.IsSemiColon()}? ';' -> type(SEMI), popMode ;
+MetaSemi : {p.IsSemiColon()}? ';' -> type(SEMI), popMode ;
 MetaOther : ~[;\r\n\\"] .*? ('\\\\' | [\r\n]+) -> type(SEMI), popMode ;

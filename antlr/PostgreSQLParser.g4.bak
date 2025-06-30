@@ -1997,7 +1997,7 @@ aggregate_with_argtypes_list
     ;
 
 createfunc_opt_list
-    : createfunc_opt_item+ {this.ParseRoutineBody();}
+    : createfunc_opt_item+ {p.ParseRoutineBody();}
     //                    | createfunc_opt_list createfunc_opt_item
     ;
 
@@ -3532,6 +3532,8 @@ original version of a_expr, for info
 ;
 */
 
+template_item: QUESTION;
+
 a_expr
     : a_expr_qual
     ;
@@ -3547,7 +3549,7 @@ a_expr
 /*19*/
 
 a_expr_qual
-    : a_expr_lessless ({this.OnlyAcceptableOps()}? qual_op | )
+    : a_expr_lessless ({p.OnlyAcceptableOps()}? qual_op | )
     ;
 
 /*18*/
@@ -4329,6 +4331,7 @@ aexprconst
     | TRUE_P
     | FALSE_P
     | NULL_P
+    | template_item
     ;
 
 xconst
@@ -4359,6 +4362,7 @@ anysconst
     | UnicodeEscapeStringConstant
     | BeginDollarStringConstant DollarText* EndDollarStringConstant
     | EscapeStringConstant
+    | QUESTION
     ;
 
 uescape_
