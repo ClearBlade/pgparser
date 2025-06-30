@@ -3667,6 +3667,12 @@ func (s *BasePostgreSQLParserListener) EnterEscape_(ctx *Escape_Context) {}
 // ExitEscape_ is called when production escape_ is exited.
 func (s *BasePostgreSQLParserListener) ExitEscape_(ctx *Escape_Context) {}
 
+// EnterTemplate_item is called when production template_item is entered.
+func (s *BasePostgreSQLParserListener) EnterTemplate_item(ctx *Template_itemContext) {}
+
+// ExitTemplate_item is called when production template_item is exited.
+func (s *BasePostgreSQLParserListener) ExitTemplate_item(ctx *Template_itemContext) {}
+
 // EnterA_expr is called when production a_expr is entered.
 func (s *BasePostgreSQLParserListener) EnterA_expr(ctx *A_exprContext) {}
 
