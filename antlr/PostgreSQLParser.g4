@@ -3529,7 +3529,6 @@ original version of a_expr, for info
        | a_expr subquery_Op sub_type (select_with_parens|OPEN_PAREN a_expr CLOSE_PAREN) -- 21
        | UNIQUE select_with_parens -- 22
        | DEFAULT -- 23
-       | template_item
 ;
 */
 
@@ -3704,6 +3703,7 @@ b_expr
     | b_expr qual_op
     //S ISNULL NOTNULL	 	IS TRUE, IS FALSE, IS NULL, IS DISTINCT FROM, etc
     | b_expr IS NOT? (DISTINCT FROM b_expr | OF OPEN_PAREN type_list CLOSE_PAREN | DOCUMENT_P)
+    | template_item
     ;
 
 c_expr
