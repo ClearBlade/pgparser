@@ -51,8 +51,17 @@ func (receiver *PostgreSQLLexerBase) CheckLaMinus() bool {
 	return receiver.GetInputStream().LA(1) != '-'
 }
 
-func (receiver *PostgreSQLLexerBase) IsEqualQuestion() bool {
-	return receiver.GetText() == "=" && receiver.GetInputStream().LA(1) == '?'
+/**
+ * Checks if the next character is a template parameter, not an operator.
+ * This will force the tokenizer to split the tokens instead of making it one long operator.
+ */
+func (receiver *PostgreSQLLexerBase) CheckLaTemplateParam() bool {
+	if receiver.GetInputStream().LA(1) != '?' {
+		return false
+	}
+
+	// My assumption is that it only makes sense to have a template param after a comparison operator
+	return receiver.GetText() == "=" || receiver.GetText() == ">" || receiver.GetText() == "<"
 }
 
 func (receiver *PostgreSQLLexerBase) CheckLaStar() bool {

@@ -117,7 +117,7 @@ Operator:
     (
         (
             // Have to handle this special case where we have =?. This is a template param, not two operators
-            {!p.IsEqualQuestion()}? OperatorCharacter
+            {!p.CheckLaTemplateParam()}? OperatorCharacter
             | ('+' | '-' {p.CheckLaMinus()}? )+ (OperatorCharacter | '/' {p.CheckLaStar()}? )
             | '/'        {p.CheckLaStar()}?
         )+ 
