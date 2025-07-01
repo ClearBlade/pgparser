@@ -3959,6 +3959,12 @@ sub_type
     | ALL
     ;
 
+/*
+Although QUESTION is an operator according to the lexer rules, a single "?" by itself will never be matched as an operator.
+This is because we define the QUESTION token with higher precedence in the lexer.
+We need to do this because we are unsure as to whether the QUESTION is a query param placeholder or an actual JSON operator. This can only be determined by context.
+So we separate it out as a different token during the lexer and let the parser deal with the ambiguity through its rules.
+*/
 all_op
     : Operator
     | mathop
