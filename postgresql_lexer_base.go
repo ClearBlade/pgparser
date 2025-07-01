@@ -84,8 +84,8 @@ func (receiver *PostgreSQLLexerBase) isCurrentCharacterTemplateParam() bool {
 		return false
 	}
 
-	nextChar := receiver.GetInputStream().LA(1) 
-	return receiver.isComparisonOperator(rune(nextChar))
+	nextChar := receiver.GetInputStream().LA(1)
+	return receiver.isComparisonOperator(rune(nextChar)) || nextChar == '!'
 }
 
 func (receiver *PostgreSQLLexerBase) isComparisonOperator(c rune) bool {
