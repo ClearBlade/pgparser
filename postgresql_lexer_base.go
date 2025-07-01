@@ -56,6 +56,16 @@ func (receiver *PostgreSQLLexerBase) CheckLaMinus() bool {
  * This will force the tokenizer to split the tokens instead of making it one long operator.
  */
 func (receiver *PostgreSQLLexerBase) CheckLaTemplateParam() bool {
+	// Handle the case where we have "=?"
+	if receiver.isNextCharacterTemplateParam() {
+		return true
+	}
+
+	// Handle case where we've already parsed the template param because it's on the left of an operator (e.g. "?=")
+	return receiver.isCurrentCharacterTemplateParam()
+}
+
+func (receiver *PostgreSQLLexerBase) isNextCharacterTemplateParam() bool {
 	if receiver.GetInputStream().LA(1) != '?' {
 		return false
 	}
@@ -66,8 +76,20 @@ func (receiver *PostgreSQLLexerBase) CheckLaTemplateParam() bool {
 	}
 
 	// My assumption is that it only makes sense to have a template param after a comparison operator
-	lastChar := text[len(text)-1]
-	return lastChar == '=' || lastChar == '>' || lastChar == '<'
+	return receiver.isComparisonOperator(rune(text[len(text)-1]))
+}
+
+func (receiver *PostgreSQLLexerBase) isCurrentCharacterTemplateParam() bool {
+	if receiver.GetText() != "?" {
+		return false
+	}
+
+	nextChar := receiver.GetInputStream().LA(1) 
+	return receiver.isComparisonOperator(rune(nextChar))
+}
+
+func (receiver *PostgreSQLLexerBase) isComparisonOperator(c rune) bool {
+	return c == '=' || c == '>' || c == '<'
 }
 
 func (receiver *PostgreSQLLexerBase) CheckLaStar() bool {

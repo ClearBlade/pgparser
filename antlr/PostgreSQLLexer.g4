@@ -118,7 +118,7 @@ QUESTION: '?';
 Operator:
     (
         (
-            // Have to handle this special case where we have =?. This is a template param, not two operators
+            // Have to handle this special case where we have =? (or >?, <?, etc). This is a template param, not two operators
             {!p.CheckLaTemplateParam()}? OperatorCharacter
             | ('+' | '-' {p.CheckLaMinus()}? )+ (OperatorCharacter | '/' {p.CheckLaStar()}? )
             | '/'        {p.CheckLaStar()}?
