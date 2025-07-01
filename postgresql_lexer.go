@@ -3825,7 +3825,7 @@ func (l *PostgreSQLLexer) Sempred(localctx antlr.RuleContext, ruleIndex, predInd
 func (p *PostgreSQLLexer) Operator_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return !p.IsEqualQuestion()
+		return !p.CheckLaTemplateParam()
 
 	case 1:
 		return p.CheckLaMinus()

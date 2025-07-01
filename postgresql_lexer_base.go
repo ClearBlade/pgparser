@@ -60,8 +60,14 @@ func (receiver *PostgreSQLLexerBase) CheckLaTemplateParam() bool {
 		return false
 	}
 
+	text := receiver.GetText()
+	if len(text) == 0 {
+		return false
+	}
+
 	// My assumption is that it only makes sense to have a template param after a comparison operator
-	return receiver.GetText() == "=" || receiver.GetText() == ">" || receiver.GetText() == "<"
+	lastChar := text[len(text)-1]
+	return lastChar == '=' || lastChar == '>' || lastChar == '<'
 }
 
 func (receiver *PostgreSQLLexerBase) CheckLaStar() bool {
