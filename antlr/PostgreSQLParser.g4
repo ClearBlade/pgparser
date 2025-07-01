@@ -2826,8 +2826,9 @@ on_conflict_
     ;
 
 conf_expr_
-    : OPEN_PAREN index_params CLOSE_PAREN where_clause?
-    | ON CONSTRAINT name
+    : OPEN_PAREN index_params CLOSE_PAREN where_clause? # conf_expr_multi_target
+    | colid where_clause? # conf_expr_single_target
+    | ON CONSTRAINT name # conf_expr_constraint
     
     ;
 

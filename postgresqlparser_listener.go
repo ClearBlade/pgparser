@@ -1388,8 +1388,14 @@ type PostgreSQLParserListener interface {
 	// EnterOn_conflict_ is called when entering the on_conflict_ production.
 	EnterOn_conflict_(c *On_conflict_Context)
 
-	// EnterConf_expr_ is called when entering the conf_expr_ production.
-	EnterConf_expr_(c *Conf_expr_Context)
+	// EnterConf_expr_multi_target is called when entering the conf_expr_multi_target production.
+	EnterConf_expr_multi_target(c *Conf_expr_multi_targetContext)
+
+	// EnterConf_expr_single_target is called when entering the conf_expr_single_target production.
+	EnterConf_expr_single_target(c *Conf_expr_single_targetContext)
+
+	// EnterConf_expr_constraint is called when entering the conf_expr_constraint production.
+	EnterConf_expr_constraint(c *Conf_expr_constraintContext)
 
 	// EnterReturning_clause is called when entering the returning_clause production.
 	EnterReturning_clause(c *Returning_clauseContext)
@@ -3560,8 +3566,14 @@ type PostgreSQLParserListener interface {
 	// ExitOn_conflict_ is called when exiting the on_conflict_ production.
 	ExitOn_conflict_(c *On_conflict_Context)
 
-	// ExitConf_expr_ is called when exiting the conf_expr_ production.
-	ExitConf_expr_(c *Conf_expr_Context)
+	// ExitConf_expr_multi_target is called when exiting the conf_expr_multi_target production.
+	ExitConf_expr_multi_target(c *Conf_expr_multi_targetContext)
+
+	// ExitConf_expr_single_target is called when exiting the conf_expr_single_target production.
+	ExitConf_expr_single_target(c *Conf_expr_single_targetContext)
+
+	// ExitConf_expr_constraint is called when exiting the conf_expr_constraint production.
+	ExitConf_expr_constraint(c *Conf_expr_constraintContext)
 
 	// ExitReturning_clause is called when exiting the returning_clause production.
 	ExitReturning_clause(c *Returning_clauseContext)
