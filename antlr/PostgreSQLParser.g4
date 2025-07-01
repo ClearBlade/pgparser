@@ -3962,6 +3962,7 @@ sub_type
 all_op
     : Operator
     | mathop
+    | QUESTION
     ;
 
 mathop
@@ -3981,6 +3982,7 @@ mathop
 
 qual_op
     : Operator
+    | QUESTION
     | OPERATOR OPEN_PAREN any_operator CLOSE_PAREN
     ;
 
