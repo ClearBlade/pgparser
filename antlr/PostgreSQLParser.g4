@@ -2826,8 +2826,9 @@ on_conflict_
     ;
 
 conf_expr_
-    : OPEN_PAREN index_params CLOSE_PAREN where_clause?
-    | ON CONSTRAINT name
+    : OPEN_PAREN index_params CLOSE_PAREN where_clause? # conf_expr_multi_target
+    | colid where_clause? # conf_expr_single_target
+    | ON CONSTRAINT name # conf_expr_constraint
     
     ;
 
@@ -3958,9 +3959,16 @@ sub_type
     | ALL
     ;
 
+/*
+Although QUESTION is an operator according to the lexer rules, a single "?" by itself will never be matched as an operator.
+This is because we define the QUESTION token with higher precedence in the lexer.
+We need to do this because we are unsure as to whether the QUESTION is a query param placeholder or an actual JSON operator. This can only be determined by context.
+So we separate it out as a different token during the lexer and let the parser deal with the ambiguity through its rules.
+*/
 all_op
     : Operator
     | mathop
+    | QUESTION
     ;
 
 mathop
@@ -3980,6 +3988,7 @@ mathop
 
 qual_op
     : Operator
+    | QUESTION
     | OPERATOR OPEN_PAREN any_operator CLOSE_PAREN
     ;
 
@@ -4359,6 +4368,11 @@ anysconst
     | UnicodeEscapeStringConstant
     | BeginDollarStringConstant DollarText* EndDollarStringConstant
     | EscapeStringConstant
+    | template_item
+    ;
+
+template_item
+    : QUESTION
     ;
 
 uescape_

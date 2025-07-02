@@ -103,6 +103,10 @@ TYPECAST: '::';
 PERCENT: '%';
 
 PARAM: '$' ([0-9])+;
+
+// For template params
+QUESTION: '?';
+
 //
 
 // OPERATORS (4.1.3)
@@ -114,16 +118,18 @@ PARAM: '$' ([0-9])+;
 Operator:
     (
         (
-            OperatorCharacter
+            // Have to handle this special case where we have =? (or >?, <?, etc). This is a template param, not two operators
+            {!p.CheckLaTemplateParam()}? OperatorCharacter
             | ('+' | '-' {p.CheckLaMinus()}? )+ (OperatorCharacter | '/' {p.CheckLaStar()}? )
             | '/'        {p.CheckLaStar()}?
-        )+
+        )+ 
         | // special handling for the single-character operators + and -
         [+-]
     )
     //TODO somehow rewrite this part without using Actions
     {l.HandleLessLessGreaterGreater();}
 ;
+
 /* This rule handles operators which end with + or -, and sets the token type to Operator. It is comprised of four
  * parts, in order:
  *
@@ -155,8 +161,6 @@ fragment OperatorCharacterAllowPlusMinusAtEnd: [~!@%^&|`?#];
 //
 
 // KEYWORDS (Appendix C)
-
-
 
 JSON: 'JSON';
 JSON_ARRAY: 'JSON_ARRAY';
@@ -1201,8 +1205,6 @@ LOOP: 'LOOP';
 OPEN: 'OPEN';
 
 FORMAT: 'FORMAT';
-
-
 
 
 

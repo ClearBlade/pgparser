@@ -2926,11 +2926,27 @@ func (s *BasePostgreSQLParserListener) EnterOn_conflict_(ctx *On_conflict_Contex
 // ExitOn_conflict_ is called when production on_conflict_ is exited.
 func (s *BasePostgreSQLParserListener) ExitOn_conflict_(ctx *On_conflict_Context) {}
 
-// EnterConf_expr_ is called when production conf_expr_ is entered.
-func (s *BasePostgreSQLParserListener) EnterConf_expr_(ctx *Conf_expr_Context) {}
+// EnterConf_expr_multi_target is called when production conf_expr_multi_target is entered.
+func (s *BasePostgreSQLParserListener) EnterConf_expr_multi_target(ctx *Conf_expr_multi_targetContext) {
+}
 
-// ExitConf_expr_ is called when production conf_expr_ is exited.
-func (s *BasePostgreSQLParserListener) ExitConf_expr_(ctx *Conf_expr_Context) {}
+// ExitConf_expr_multi_target is called when production conf_expr_multi_target is exited.
+func (s *BasePostgreSQLParserListener) ExitConf_expr_multi_target(ctx *Conf_expr_multi_targetContext) {
+}
+
+// EnterConf_expr_single_target is called when production conf_expr_single_target is entered.
+func (s *BasePostgreSQLParserListener) EnterConf_expr_single_target(ctx *Conf_expr_single_targetContext) {
+}
+
+// ExitConf_expr_single_target is called when production conf_expr_single_target is exited.
+func (s *BasePostgreSQLParserListener) ExitConf_expr_single_target(ctx *Conf_expr_single_targetContext) {
+}
+
+// EnterConf_expr_constraint is called when production conf_expr_constraint is entered.
+func (s *BasePostgreSQLParserListener) EnterConf_expr_constraint(ctx *Conf_expr_constraintContext) {}
+
+// ExitConf_expr_constraint is called when production conf_expr_constraint is exited.
+func (s *BasePostgreSQLParserListener) ExitConf_expr_constraint(ctx *Conf_expr_constraintContext) {}
 
 // EnterReturning_clause is called when production returning_clause is entered.
 func (s *BasePostgreSQLParserListener) EnterReturning_clause(ctx *Returning_clauseContext) {}
@@ -4438,6 +4454,12 @@ func (s *BasePostgreSQLParserListener) EnterAnysconst(ctx *AnysconstContext) {}
 
 // ExitAnysconst is called when production anysconst is exited.
 func (s *BasePostgreSQLParserListener) ExitAnysconst(ctx *AnysconstContext) {}
+
+// EnterTemplate_item is called when production template_item is entered.
+func (s *BasePostgreSQLParserListener) EnterTemplate_item(ctx *Template_itemContext) {}
+
+// ExitTemplate_item is called when production template_item is exited.
+func (s *BasePostgreSQLParserListener) ExitTemplate_item(ctx *Template_itemContext) {}
 
 // EnterUescape_ is called when production uescape_ is entered.
 func (s *BasePostgreSQLParserListener) EnterUescape_(ctx *Uescape_Context) {}
