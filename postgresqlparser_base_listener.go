@@ -3106,12 +3106,29 @@ func (s *BasePostgreSQLParserListener) EnterSimple_select_intersect(ctx *Simple_
 func (s *BasePostgreSQLParserListener) ExitSimple_select_intersect(ctx *Simple_select_intersectContext) {
 }
 
-// EnterSimple_select_pramary is called when production simple_select_pramary is entered.
-func (s *BasePostgreSQLParserListener) EnterSimple_select_pramary(ctx *Simple_select_pramaryContext) {
-}
+// EnterSimple_select_body is called when production simple_select_body is entered.
+func (s *BasePostgreSQLParserListener) EnterSimple_select_body(ctx *Simple_select_bodyContext) {}
 
-// ExitSimple_select_pramary is called when production simple_select_pramary is exited.
-func (s *BasePostgreSQLParserListener) ExitSimple_select_pramary(ctx *Simple_select_pramaryContext) {}
+// ExitSimple_select_body is called when production simple_select_body is exited.
+func (s *BasePostgreSQLParserListener) ExitSimple_select_body(ctx *Simple_select_bodyContext) {}
+
+// EnterSimple_select_values is called when production simple_select_values is entered.
+func (s *BasePostgreSQLParserListener) EnterSimple_select_values(ctx *Simple_select_valuesContext) {}
+
+// ExitSimple_select_values is called when production simple_select_values is exited.
+func (s *BasePostgreSQLParserListener) ExitSimple_select_values(ctx *Simple_select_valuesContext) {}
+
+// EnterSimple_select_table is called when production simple_select_table is entered.
+func (s *BasePostgreSQLParserListener) EnterSimple_select_table(ctx *Simple_select_tableContext) {}
+
+// ExitSimple_select_table is called when production simple_select_table is exited.
+func (s *BasePostgreSQLParserListener) ExitSimple_select_table(ctx *Simple_select_tableContext) {}
+
+// EnterSimple_select_nested is called when production simple_select_nested is entered.
+func (s *BasePostgreSQLParserListener) EnterSimple_select_nested(ctx *Simple_select_nestedContext) {}
+
+// ExitSimple_select_nested is called when production simple_select_nested is exited.
+func (s *BasePostgreSQLParserListener) ExitSimple_select_nested(ctx *Simple_select_nestedContext) {}
 
 // EnterWith_clause is called when production with_clause is entered.
 func (s *BasePostgreSQLParserListener) EnterWith_clause(ctx *With_clauseContext) {}

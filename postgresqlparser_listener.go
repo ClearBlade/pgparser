@@ -1475,8 +1475,17 @@ type PostgreSQLParserListener interface {
 	// EnterSimple_select_intersect is called when entering the simple_select_intersect production.
 	EnterSimple_select_intersect(c *Simple_select_intersectContext)
 
-	// EnterSimple_select_pramary is called when entering the simple_select_pramary production.
-	EnterSimple_select_pramary(c *Simple_select_pramaryContext)
+	// EnterSimple_select_body is called when entering the simple_select_body production.
+	EnterSimple_select_body(c *Simple_select_bodyContext)
+
+	// EnterSimple_select_values is called when entering the simple_select_values production.
+	EnterSimple_select_values(c *Simple_select_valuesContext)
+
+	// EnterSimple_select_table is called when entering the simple_select_table production.
+	EnterSimple_select_table(c *Simple_select_tableContext)
+
+	// EnterSimple_select_nested is called when entering the simple_select_nested production.
+	EnterSimple_select_nested(c *Simple_select_nestedContext)
 
 	// EnterWith_clause is called when entering the with_clause production.
 	EnterWith_clause(c *With_clauseContext)
@@ -3653,8 +3662,17 @@ type PostgreSQLParserListener interface {
 	// ExitSimple_select_intersect is called when exiting the simple_select_intersect production.
 	ExitSimple_select_intersect(c *Simple_select_intersectContext)
 
-	// ExitSimple_select_pramary is called when exiting the simple_select_pramary production.
-	ExitSimple_select_pramary(c *Simple_select_pramaryContext)
+	// ExitSimple_select_body is called when exiting the simple_select_body production.
+	ExitSimple_select_body(c *Simple_select_bodyContext)
+
+	// ExitSimple_select_values is called when exiting the simple_select_values production.
+	ExitSimple_select_values(c *Simple_select_valuesContext)
+
+	// ExitSimple_select_table is called when exiting the simple_select_table production.
+	ExitSimple_select_table(c *Simple_select_tableContext)
+
+	// ExitSimple_select_nested is called when exiting the simple_select_nested production.
+	ExitSimple_select_nested(c *Simple_select_nestedContext)
 
 	// ExitWith_clause is called when exiting the with_clause production.
 	ExitWith_clause(c *With_clauseContext)

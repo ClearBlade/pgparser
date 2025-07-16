@@ -117871,24 +117871,6 @@ type ISimple_select_pramaryContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
-
-	// Getter signatures
-	SELECT() antlr.TerminalNode
-	Distinct_clause() IDistinct_clauseContext
-	Target_list() ITarget_listContext
-	All_clause_() IAll_clause_Context
-	Target_list_() ITarget_list_Context
-	Into_clause() IInto_clauseContext
-	From_clause() IFrom_clauseContext
-	Where_clause() IWhere_clauseContext
-	Group_clause() IGroup_clauseContext
-	Having_clause() IHaving_clauseContext
-	Window_clause() IWindow_clauseContext
-	Values_clause() IValues_clauseContext
-	TABLE() antlr.TerminalNode
-	Relation_expr() IRelation_exprContext
-	Select_with_parens() ISelect_with_parensContext
-
 	// IsSimple_select_pramaryContext differentiates from other interfaces.
 	IsSimple_select_pramaryContext()
 }
@@ -117925,171 +117907,37 @@ func NewSimple_select_pramaryContext(parser antlr.Parser, parent antlr.ParserRul
 
 func (s *Simple_select_pramaryContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *Simple_select_pramaryContext) SELECT() antlr.TerminalNode {
-	return s.GetToken(PostgreSQLParserSELECT, 0)
+func (s *Simple_select_pramaryContext) CopyAll(ctx *Simple_select_pramaryContext) {
+	s.CopyFrom(&ctx.BaseParserRuleContext)
 }
 
-func (s *Simple_select_pramaryContext) Distinct_clause() IDistinct_clauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IDistinct_clauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IDistinct_clauseContext)
+func (s *Simple_select_pramaryContext) GetRuleContext() antlr.RuleContext {
+	return s
 }
 
-func (s *Simple_select_pramaryContext) Target_list() ITarget_listContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ITarget_listContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ITarget_listContext)
+func (s *Simple_select_pramaryContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *Simple_select_pramaryContext) All_clause_() IAll_clause_Context {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IAll_clause_Context); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IAll_clause_Context)
+type Simple_select_valuesContext struct {
+	Simple_select_pramaryContext
 }
 
-func (s *Simple_select_pramaryContext) Target_list_() ITarget_list_Context {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ITarget_list_Context); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
+func NewSimple_select_valuesContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *Simple_select_valuesContext {
+	var p = new(Simple_select_valuesContext)
 
-	if t == nil {
-		return nil
-	}
+	InitEmptySimple_select_pramaryContext(&p.Simple_select_pramaryContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*Simple_select_pramaryContext))
 
-	return t.(ITarget_list_Context)
+	return p
 }
 
-func (s *Simple_select_pramaryContext) Into_clause() IInto_clauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IInto_clauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IInto_clauseContext)
+func (s *Simple_select_valuesContext) GetRuleContext() antlr.RuleContext {
+	return s
 }
 
-func (s *Simple_select_pramaryContext) From_clause() IFrom_clauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFrom_clauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFrom_clauseContext)
-}
-
-func (s *Simple_select_pramaryContext) Where_clause() IWhere_clauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IWhere_clauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IWhere_clauseContext)
-}
-
-func (s *Simple_select_pramaryContext) Group_clause() IGroup_clauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IGroup_clauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IGroup_clauseContext)
-}
-
-func (s *Simple_select_pramaryContext) Having_clause() IHaving_clauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IHaving_clauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IHaving_clauseContext)
-}
-
-func (s *Simple_select_pramaryContext) Window_clause() IWindow_clauseContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IWindow_clauseContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IWindow_clauseContext)
-}
-
-func (s *Simple_select_pramaryContext) Values_clause() IValues_clauseContext {
+func (s *Simple_select_valuesContext) Values_clause() IValues_clauseContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(IValues_clauseContext); ok {
@@ -118105,27 +117953,37 @@ func (s *Simple_select_pramaryContext) Values_clause() IValues_clauseContext {
 	return t.(IValues_clauseContext)
 }
 
-func (s *Simple_select_pramaryContext) TABLE() antlr.TerminalNode {
-	return s.GetToken(PostgreSQLParserTABLE, 0)
+func (s *Simple_select_valuesContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
+		listenerT.EnterSimple_select_values(s)
+	}
 }
 
-func (s *Simple_select_pramaryContext) Relation_expr() IRelation_exprContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IRelation_exprContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
+func (s *Simple_select_valuesContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
+		listenerT.ExitSimple_select_values(s)
 	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IRelation_exprContext)
 }
 
-func (s *Simple_select_pramaryContext) Select_with_parens() ISelect_with_parensContext {
+type Simple_select_nestedContext struct {
+	Simple_select_pramaryContext
+}
+
+func NewSimple_select_nestedContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *Simple_select_nestedContext {
+	var p = new(Simple_select_nestedContext)
+
+	InitEmptySimple_select_pramaryContext(&p.Simple_select_pramaryContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*Simple_select_pramaryContext))
+
+	return p
+}
+
+func (s *Simple_select_nestedContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Simple_select_nestedContext) Select_with_parens() ISelect_with_parensContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(ISelect_with_parensContext); ok {
@@ -118141,23 +117999,259 @@ func (s *Simple_select_pramaryContext) Select_with_parens() ISelect_with_parensC
 	return t.(ISelect_with_parensContext)
 }
 
-func (s *Simple_select_pramaryContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *Simple_select_pramaryContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *Simple_select_pramaryContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *Simple_select_nestedContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
-		listenerT.EnterSimple_select_pramary(s)
+		listenerT.EnterSimple_select_nested(s)
 	}
 }
 
-func (s *Simple_select_pramaryContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *Simple_select_nestedContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
-		listenerT.ExitSimple_select_pramary(s)
+		listenerT.ExitSimple_select_nested(s)
+	}
+}
+
+type Simple_select_tableContext struct {
+	Simple_select_pramaryContext
+}
+
+func NewSimple_select_tableContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *Simple_select_tableContext {
+	var p = new(Simple_select_tableContext)
+
+	InitEmptySimple_select_pramaryContext(&p.Simple_select_pramaryContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*Simple_select_pramaryContext))
+
+	return p
+}
+
+func (s *Simple_select_tableContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Simple_select_tableContext) TABLE() antlr.TerminalNode {
+	return s.GetToken(PostgreSQLParserTABLE, 0)
+}
+
+func (s *Simple_select_tableContext) Relation_expr() IRelation_exprContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IRelation_exprContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IRelation_exprContext)
+}
+
+func (s *Simple_select_tableContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
+		listenerT.EnterSimple_select_table(s)
+	}
+}
+
+func (s *Simple_select_tableContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
+		listenerT.ExitSimple_select_table(s)
+	}
+}
+
+type Simple_select_bodyContext struct {
+	Simple_select_pramaryContext
+}
+
+func NewSimple_select_bodyContext(parser antlr.Parser, ctx antlr.ParserRuleContext) *Simple_select_bodyContext {
+	var p = new(Simple_select_bodyContext)
+
+	InitEmptySimple_select_pramaryContext(&p.Simple_select_pramaryContext)
+	p.parser = parser
+	p.CopyAll(ctx.(*Simple_select_pramaryContext))
+
+	return p
+}
+
+func (s *Simple_select_bodyContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Simple_select_bodyContext) SELECT() antlr.TerminalNode {
+	return s.GetToken(PostgreSQLParserSELECT, 0)
+}
+
+func (s *Simple_select_bodyContext) Distinct_clause() IDistinct_clauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IDistinct_clauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IDistinct_clauseContext)
+}
+
+func (s *Simple_select_bodyContext) Target_list() ITarget_listContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ITarget_listContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITarget_listContext)
+}
+
+func (s *Simple_select_bodyContext) All_clause_() IAll_clause_Context {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IAll_clause_Context); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IAll_clause_Context)
+}
+
+func (s *Simple_select_bodyContext) Target_list_() ITarget_list_Context {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ITarget_list_Context); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ITarget_list_Context)
+}
+
+func (s *Simple_select_bodyContext) Into_clause() IInto_clauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IInto_clauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IInto_clauseContext)
+}
+
+func (s *Simple_select_bodyContext) From_clause() IFrom_clauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IFrom_clauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFrom_clauseContext)
+}
+
+func (s *Simple_select_bodyContext) Where_clause() IWhere_clauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IWhere_clauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IWhere_clauseContext)
+}
+
+func (s *Simple_select_bodyContext) Group_clause() IGroup_clauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IGroup_clauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IGroup_clauseContext)
+}
+
+func (s *Simple_select_bodyContext) Having_clause() IHaving_clauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IHaving_clauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IHaving_clauseContext)
+}
+
+func (s *Simple_select_bodyContext) Window_clause() IWindow_clauseContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IWindow_clauseContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IWindow_clauseContext)
+}
+
+func (s *Simple_select_bodyContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
+		listenerT.EnterSimple_select_body(s)
+	}
+}
+
+func (s *Simple_select_bodyContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PostgreSQLParserListener); ok {
+		listenerT.ExitSimple_select_body(s)
 	}
 }
 
@@ -118174,6 +118268,7 @@ func (p *PostgreSQLParser) Simple_select_pramary() (localctx ISimple_select_pram
 
 	switch p.GetTokenStream().LA(1) {
 	case PostgreSQLParserSELECT:
+		localctx = NewSimple_select_bodyContext(p, localctx)
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(8213)
@@ -118404,6 +118499,7 @@ func (p *PostgreSQLParser) Simple_select_pramary() (localctx ISimple_select_pram
 		}
 
 	case PostgreSQLParserVALUES:
+		localctx = NewSimple_select_valuesContext(p, localctx)
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(8260)
@@ -118411,6 +118507,7 @@ func (p *PostgreSQLParser) Simple_select_pramary() (localctx ISimple_select_pram
 		}
 
 	case PostgreSQLParserTABLE:
+		localctx = NewSimple_select_tableContext(p, localctx)
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(8261)
@@ -118426,6 +118523,7 @@ func (p *PostgreSQLParser) Simple_select_pramary() (localctx ISimple_select_pram
 		}
 
 	case PostgreSQLParserOPEN_PAREN:
+		localctx = NewSimple_select_nestedContext(p, localctx)
 		p.EnterOuterAlt(localctx, 4)
 		{
 			p.SetState(8263)

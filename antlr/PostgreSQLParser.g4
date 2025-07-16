@@ -2980,10 +2980,10 @@ simple_select_pramary
 		into_clause? from_clause? where_clause?
 		group_clause? having_clause? window_clause?
         )
-    )
-    | values_clause
-    | TABLE relation_expr
-    | select_with_parens
+    ) # simple_select_body
+    | values_clause # simple_select_values
+    | TABLE relation_expr # simple_select_table
+    | select_with_parens # simple_select_nested
     ;
 
 with_clause
