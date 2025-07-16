@@ -3194,26 +3194,35 @@ from_list
 
 table_ref
     : (
-        relation_expr alias_clause? tablesample_clause?
-        | func_table func_alias_clause?
-        | xmltable alias_clause?
-        | select_with_parens alias_clause?
-        | LATERAL_P (
-            xmltable alias_clause?
-            | func_table func_alias_clause?
-            | select_with_parens alias_clause?
-        )
-        | OPEN_PAREN table_ref (
-            CROSS JOIN table_ref
-            | NATURAL join_type? JOIN table_ref
-            | join_type? JOIN table_ref join_qual
-        )? CLOSE_PAREN alias_clause?
+        table_ref_relation
+        | table_ref_function
+        | table_ref_xml
+        | table_ref_select
+        | table_ref_lateral
+        | table_ref_parens
     ) (
         CROSS JOIN table_ref
         | NATURAL join_type? JOIN table_ref
         | join_type? JOIN table_ref join_qual
     )*
     ;
+
+table_ref_relation: relation_expr alias_clause? tablesample_clause?;
+table_ref_function: func_table func_alias_clause?;
+table_ref_xml: xmltable alias_clause?;
+table_ref_select: select_with_parens alias_clause?;
+table_ref_lateral
+    : LATERAL_P (
+        table_ref_xml
+        | table_ref_function
+        | table_ref_select
+    );
+table_ref_parens
+    : OPEN_PAREN table_ref (
+        CROSS JOIN table_ref
+        | NATURAL join_type? JOIN table_ref
+        | join_type? JOIN table_ref join_qual
+    )? CLOSE_PAREN alias_clause?;
 
 alias_clause
     : AS? colid (OPEN_PAREN name_list CLOSE_PAREN)?

@@ -1619,6 +1619,24 @@ type PostgreSQLParserListener interface {
 	// EnterTable_ref is called when entering the table_ref production.
 	EnterTable_ref(c *Table_refContext)
 
+	// EnterTable_ref_relation is called when entering the table_ref_relation production.
+	EnterTable_ref_relation(c *Table_ref_relationContext)
+
+	// EnterTable_ref_function is called when entering the table_ref_function production.
+	EnterTable_ref_function(c *Table_ref_functionContext)
+
+	// EnterTable_ref_xml is called when entering the table_ref_xml production.
+	EnterTable_ref_xml(c *Table_ref_xmlContext)
+
+	// EnterTable_ref_select is called when entering the table_ref_select production.
+	EnterTable_ref_select(c *Table_ref_selectContext)
+
+	// EnterTable_ref_lateral is called when entering the table_ref_lateral production.
+	EnterTable_ref_lateral(c *Table_ref_lateralContext)
+
+	// EnterTable_ref_parens is called when entering the table_ref_parens production.
+	EnterTable_ref_parens(c *Table_ref_parensContext)
+
 	// EnterAlias_clause is called when entering the alias_clause production.
 	EnterAlias_clause(c *Alias_clauseContext)
 
@@ -3805,6 +3823,24 @@ type PostgreSQLParserListener interface {
 
 	// ExitTable_ref is called when exiting the table_ref production.
 	ExitTable_ref(c *Table_refContext)
+
+	// ExitTable_ref_relation is called when exiting the table_ref_relation production.
+	ExitTable_ref_relation(c *Table_ref_relationContext)
+
+	// ExitTable_ref_function is called when exiting the table_ref_function production.
+	ExitTable_ref_function(c *Table_ref_functionContext)
+
+	// ExitTable_ref_xml is called when exiting the table_ref_xml production.
+	ExitTable_ref_xml(c *Table_ref_xmlContext)
+
+	// ExitTable_ref_select is called when exiting the table_ref_select production.
+	ExitTable_ref_select(c *Table_ref_selectContext)
+
+	// ExitTable_ref_lateral is called when exiting the table_ref_lateral production.
+	ExitTable_ref_lateral(c *Table_ref_lateralContext)
+
+	// ExitTable_ref_parens is called when exiting the table_ref_parens production.
+	ExitTable_ref_parens(c *Table_ref_parensContext)
 
 	// ExitAlias_clause is called when exiting the alias_clause production.
 	ExitAlias_clause(c *Alias_clauseContext)

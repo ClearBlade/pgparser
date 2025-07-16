@@ -3396,6 +3396,42 @@ func (s *BasePostgreSQLParserListener) EnterTable_ref(ctx *Table_refContext) {}
 // ExitTable_ref is called when production table_ref is exited.
 func (s *BasePostgreSQLParserListener) ExitTable_ref(ctx *Table_refContext) {}
 
+// EnterTable_ref_relation is called when production table_ref_relation is entered.
+func (s *BasePostgreSQLParserListener) EnterTable_ref_relation(ctx *Table_ref_relationContext) {}
+
+// ExitTable_ref_relation is called when production table_ref_relation is exited.
+func (s *BasePostgreSQLParserListener) ExitTable_ref_relation(ctx *Table_ref_relationContext) {}
+
+// EnterTable_ref_function is called when production table_ref_function is entered.
+func (s *BasePostgreSQLParserListener) EnterTable_ref_function(ctx *Table_ref_functionContext) {}
+
+// ExitTable_ref_function is called when production table_ref_function is exited.
+func (s *BasePostgreSQLParserListener) ExitTable_ref_function(ctx *Table_ref_functionContext) {}
+
+// EnterTable_ref_xml is called when production table_ref_xml is entered.
+func (s *BasePostgreSQLParserListener) EnterTable_ref_xml(ctx *Table_ref_xmlContext) {}
+
+// ExitTable_ref_xml is called when production table_ref_xml is exited.
+func (s *BasePostgreSQLParserListener) ExitTable_ref_xml(ctx *Table_ref_xmlContext) {}
+
+// EnterTable_ref_select is called when production table_ref_select is entered.
+func (s *BasePostgreSQLParserListener) EnterTable_ref_select(ctx *Table_ref_selectContext) {}
+
+// ExitTable_ref_select is called when production table_ref_select is exited.
+func (s *BasePostgreSQLParserListener) ExitTable_ref_select(ctx *Table_ref_selectContext) {}
+
+// EnterTable_ref_lateral is called when production table_ref_lateral is entered.
+func (s *BasePostgreSQLParserListener) EnterTable_ref_lateral(ctx *Table_ref_lateralContext) {}
+
+// ExitTable_ref_lateral is called when production table_ref_lateral is exited.
+func (s *BasePostgreSQLParserListener) ExitTable_ref_lateral(ctx *Table_ref_lateralContext) {}
+
+// EnterTable_ref_parens is called when production table_ref_parens is entered.
+func (s *BasePostgreSQLParserListener) EnterTable_ref_parens(ctx *Table_ref_parensContext) {}
+
+// ExitTable_ref_parens is called when production table_ref_parens is exited.
+func (s *BasePostgreSQLParserListener) ExitTable_ref_parens(ctx *Table_ref_parensContext) {}
+
 // EnterAlias_clause is called when production alias_clause is entered.
 func (s *BasePostgreSQLParserListener) EnterAlias_clause(ctx *Alias_clauseContext) {}
 
