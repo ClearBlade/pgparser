@@ -3432,6 +3432,12 @@ func (s *BasePostgreSQLParserListener) EnterTable_ref_parens(ctx *Table_ref_pare
 // ExitTable_ref_parens is called when production table_ref_parens is exited.
 func (s *BasePostgreSQLParserListener) ExitTable_ref_parens(ctx *Table_ref_parensContext) {}
 
+// EnterTable_ref_join is called when production table_ref_join is entered.
+func (s *BasePostgreSQLParserListener) EnterTable_ref_join(ctx *Table_ref_joinContext) {}
+
+// ExitTable_ref_join is called when production table_ref_join is exited.
+func (s *BasePostgreSQLParserListener) ExitTable_ref_join(ctx *Table_ref_joinContext) {}
+
 // EnterAlias_clause is called when production alias_clause is entered.
 func (s *BasePostgreSQLParserListener) EnterAlias_clause(ctx *Alias_clauseContext) {}
 

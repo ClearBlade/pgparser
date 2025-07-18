@@ -3200,11 +3200,7 @@ table_ref
         | table_ref_select
         | table_ref_lateral
         | table_ref_parens
-    ) (
-        CROSS JOIN table_ref
-        | NATURAL join_type? JOIN table_ref
-        | join_type? JOIN table_ref join_qual
-    )*
+    ) table_ref_join*
     ;
 
 table_ref_relation: relation_expr alias_clause? tablesample_clause?;
@@ -3217,12 +3213,15 @@ table_ref_lateral
         | table_ref_function
         | table_ref_select
     );
+
 table_ref_parens
-    : OPEN_PAREN table_ref (
-        CROSS JOIN table_ref
+    : OPEN_PAREN table_ref table_ref_join? CLOSE_PAREN alias_clause?;
+
+table_ref_join
+    :  CROSS JOIN table_ref
         | NATURAL join_type? JOIN table_ref
         | join_type? JOIN table_ref join_qual
-    )? CLOSE_PAREN alias_clause?;
+    ;
 
 alias_clause
     : AS? colid (OPEN_PAREN name_list CLOSE_PAREN)?
